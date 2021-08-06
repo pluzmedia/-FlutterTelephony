@@ -307,7 +307,7 @@ class Telephony {
   ///
   /// Uses TelephonyManager class on Android.
   ///
-  Future<bool?> get isSmsCapable => _foregroundChannel.invokeMethod<bool>(IS_SMS_CAPABLE);
+  Future<bool?> get isSmsCapable => _foregroundChannel.invokeMethod<bool>(IS_SMS_CAPABLE, {"simSlot": Telephony.sim});
 
   ///
   /// Returns a constant indicating the current data connection state (cellular).
@@ -316,7 +316,7 @@ class Telephony {
   ///
   /// [Future<DataState>]
   Future<DataState> get cellularDataState async {
-    final int? dataState = await _foregroundChannel.invokeMethod<int>(GET_CELLULAR_DATA_STATE);
+    final int? dataState = await _foregroundChannel.invokeMethod<int>(GET_CELLULAR_DATA_STATE, {"simSlot": Telephony.sim});
     if (dataState == null || dataState == -1) {
       return DataState.UNKNOWN;
     } else {
@@ -331,7 +331,7 @@ class Telephony {
   ///
   /// [Future<CallState>]
   Future<CallState> get callState async {
-    final int? state = await _foregroundChannel.invokeMethod<int>(GET_CALL_STATE);
+    final int? state = await _foregroundChannel.invokeMethod<int>(GET_CALL_STATE, {"simSlot": Telephony.sim});
     if (state != null) {
       return CallState.values[state];
     } else {
@@ -346,7 +346,7 @@ class Telephony {
   ///
   /// [Future<CallState>]
   Future<DataActivity> get dataActivity async {
-    final int? activity = await _foregroundChannel.invokeMethod<int>(GET_DATA_ACTIVITY);
+    final int? activity = await _foregroundChannel.invokeMethod<int>(GET_DATA_ACTIVITY, {"simSlot": Telephony.sim});
     if (activity != null) {
       return DataActivity.values[activity];
     } else {
@@ -361,7 +361,7 @@ class Telephony {
   ///
   /// Result may be unreliable on CDMA networks (use phoneType to determine if on a CDMA network).
   ///
-  Future<String?> get networkOperator => _foregroundChannel.invokeMethod<String>(GET_NETWORK_OPERATOR);
+  Future<String?> get networkOperator => _foregroundChannel.invokeMethod<String>(GET_NETWORK_OPERATOR, {"simSlot": Telephony.sim});
 
   ///
   /// Returns the alphabetic name of current registered operator.
@@ -370,7 +370,7 @@ class Telephony {
   ///
   /// Result may be unreliable on CDMA networks (use phoneType to determine if on a CDMA network).
   ///
-  Future<String?> get networkOperatorName => _foregroundChannel.invokeMethod<String>(GET_NETWORK_OPERATOR_NAME);
+  Future<String?> get networkOperatorName => _foregroundChannel.invokeMethod<String>(GET_NETWORK_OPERATOR_NAME, {"simSlot": Telephony.sim});
 
   ///
   /// Returns a constant indicating the radio technology (network type) currently in use on the device for data transmission.
@@ -378,7 +378,7 @@ class Telephony {
   /// ### Requires READ_PHONE_STATE permission.
   ///
   Future<NetworkType> get dataNetworkType async {
-    final int? type = await _foregroundChannel.invokeMethod<int>(GET_DATA_NETWORK_TYPE);
+    final int? type = await _foregroundChannel.invokeMethod<int>(GET_DATA_NETWORK_TYPE, {"simSlot": Telephony.sim});
     if (type != null) {
       return NetworkType.values[type];
     } else {
@@ -390,7 +390,7 @@ class Telephony {
   /// Returns a constant indicating the device phone type. This indicates the type of radio used to transmit voice calls.
   ///
   Future<PhoneType> get phoneType async {
-    final int? type = await _foregroundChannel.invokeMethod<int>(GET_PHONE_TYPE);
+    final int? type = await _foregroundChannel.invokeMethod<int>(GET_PHONE_TYPE, {"simSlot": Telephony.sim});
     if (type != null) {
       return PhoneType.values[type];
     } else {
@@ -402,13 +402,13 @@ class Telephony {
   /// Returns the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM. 5 or 6 decimal digits.
   ///
   /// Availability: SimState must be SIM\_STATE\_READY
-  Future<String?> get simOperator => _foregroundChannel.invokeMethod<String>(GET_SIM_OPERATOR);
+  Future<String?> get simOperator => _foregroundChannel.invokeMethod<String>(GET_SIM_OPERATOR, {"simSlot": Telephony.sim});
 
   ///
   /// Returns the Service Provider Name (SPN).
   ///
   /// Availability: SimState must be SIM_STATE_READY
-  Future<String?> get simOperatorName => _foregroundChannel.invokeMethod<String>(GET_SIM_OPERATOR_NAME);
+  Future<String?> get simOperatorName => _foregroundChannel.invokeMethod<String>(GET_SIM_OPERATOR_NAME, {"simSlot": Telephony.sim});
 
   ///
   /// Returns a constant indicating the state of the default SIM card.
@@ -417,7 +417,7 @@ class Telephony {
   ///
   /// [Future<SimState>]
   Future<SimState> get simState async {
-    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SIM_STATE, {"sim": Telephony.sim});
+    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SIM_STATE, {"simSlot": Telephony.sim});
     if (state != null) {
       return SimState.values[state];
     } else {
@@ -429,7 +429,7 @@ class Telephony {
   /// Returns true if the device is considered roaming on the current network, for GSM purposes.
   ///
   /// Availability: Only when user registered to a network.
-  Future<bool?> get isNetworkRoaming => _foregroundChannel.invokeMethod<bool>(IS_NETWORK_ROAMING);
+  Future<bool?> get isNetworkRoaming => _foregroundChannel.invokeMethod<bool>(IS_NETWORK_ROAMING, {"simSlot": Telephony.sim});
 
   ///
   /// Returns a List of SignalStrength or an empty List if there are no valid measurements.
@@ -454,7 +454,7 @@ class Telephony {
   ///
   /// [Future<ServiceState>]
   Future<ServiceState> get serviceState async {
-    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SERVICE_STATE);
+    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SERVICE_STATE, {"simSlot": Telephony.sim});
     if (state != null) {
       return ServiceState.values[state];
     } else {
