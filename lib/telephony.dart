@@ -61,7 +61,6 @@ class Telephony {
     return _instance;
   }
 
-
   static Telephony get instance => _instance;
 
   ///
@@ -418,7 +417,7 @@ class Telephony {
   ///
   /// [Future<SimState>]
   Future<SimState> get simState async {
-    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SIM_STATE);
+    final int? state = await _foregroundChannel.invokeMethod<int>(GET_SIM_STATE, {"sim": Telephony.sim});
     if (state != null) {
       return SimState.values[state];
     } else {
