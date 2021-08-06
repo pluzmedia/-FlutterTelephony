@@ -81,7 +81,7 @@ class SmsMethodCallHandler(
         this.result = result
 
         action = SmsAction.fromMethod(call.method)
-        this.simSlot = call.argument(SIMSLOT)
+        this.simSlot = call.argument(SIMSLOT)!!
 
         if (action == SmsAction.NO_SUCH_METHOD) {
             result.notImplemented()
@@ -110,7 +110,7 @@ class SmsMethodCallHandler(
 
                     this.messageBody = messageBody
                     this.address = address
-                    this.simSlot = call.argument<Int>(SIMSLOT)!!;
+                    this.simSlot = call.argument<Int>(SIMSLOT)!!
 
                     listenStatus = call.argument(LISTEN_STATUS) ?: false
                 }
