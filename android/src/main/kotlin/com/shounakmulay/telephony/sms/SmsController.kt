@@ -232,8 +232,8 @@ class SmsController(private val context: Context) {
     private fun getTelephonyManager(sim: Int): TelephonyManager {
         val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         Log.d("testdi", "${sim}")
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            telephonyManager.createForSubscriptionId(sim)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return telephonyManager.createForSubscriptionId(sim)
         } else {
             return context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         }
