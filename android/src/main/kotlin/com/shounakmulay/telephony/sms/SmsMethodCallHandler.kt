@@ -88,6 +88,7 @@ class SmsMethodCallHandler(
             return
         }
 
+
         when (action.toActionType()) {
             ActionType.GET_SMS -> {
                 projection = call.argument(PROJECTION)

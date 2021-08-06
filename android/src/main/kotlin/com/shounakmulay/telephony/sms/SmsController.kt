@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.telephony.*
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import com.shounakmulay.telephony.utils.Constants.ACTION_SMS_DELIVERED
@@ -230,6 +231,7 @@ class SmsController(private val context: Context) {
 
     private fun getTelephonyManager(sim: Int): TelephonyManager {
         val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        Log.d("testdi", "${sim}")
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             telephonyManager.createForSubscriptionId(sim)
         } else {
