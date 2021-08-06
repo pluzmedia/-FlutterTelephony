@@ -61,6 +61,8 @@ class Telephony {
     return _instance;
   }
 
+  static Telephony get instance => _instance;
+
   ///
   /// Gets a singleton instance of the [Telephony] class to be used in background execution context.
   ///
