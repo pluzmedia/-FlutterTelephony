@@ -51,10 +51,15 @@ class Telephony {
   late MessageHandler _onBackgroundMessages;
   late SmsSendStatusListener _statusListener;
 
+  static int sim = 0;
+
   ///
   /// Gets a singleton instance of the [Telephony] class.
   ///
-  static Telephony get instance => _instance;
+  static Telephony getInstance(int _sim) {
+    Telephony.sim = _sim;
+    return _instance;
+  }
 
   ///
   /// Gets a singleton instance of the [Telephony] class to be used in background execution context.
@@ -433,7 +438,7 @@ class Telephony {
   ///
   /// [Future<List<SignalStrength>>]
   Future<List<SignalStrength>> get signalStrengths async {
-    final List<dynamic>? strengths = await _foregroundChannel.invokeMethod(GET_SIGNAL_STRENGTH);
+    final List<dynamic>? strengths = await _foregroundChannel.invokeMethod(GET_SIGNAL_STRENGTH, {"simSlot": Telephony.sim});
     return (strengths ?? []).map((s) => SignalStrength.values[s]).toList(growable: false);
   }
 

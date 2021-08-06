@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _message = "";
-  final telephony = Telephony.instance;
+  final telephony = Telephony.getInstance(0);
 
   @override
   void initState() {
