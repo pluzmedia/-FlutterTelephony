@@ -47,6 +47,7 @@ object Constants {
   const val SORT_ORDER = "sort_order"
   const val MESSAGE_BODY = "message_body"
   const val ADDRESS = "address"
+  const val SIMSLOT = "simSlot"
   const val LISTEN_STATUS = "listen_status"
 
   const val TIMESTAMP = "timestamp"
