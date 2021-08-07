@@ -475,7 +475,7 @@ class Telephony {
   ///
   /// Request the user for all the phone and sms permissions listed in the app's AndroidManifest.xml
   ///
-  Future<bool?> get requestPhoneAndSmsPermissions => _foregroundChannel.invokeMethod<bool>(REQUEST_PHONE_AND_SMS_PERMISSION);
+  Future<bool?> get requestPhoneAndSmsPermissions => _foregroundChannel.invokeMethod<bool>(REQUEST_PHONE_AND_SMS_PERMISSION, {"simSlot": Telephony.sim});
 
   ///
   /// Opens the default dialer with the given phone number.
