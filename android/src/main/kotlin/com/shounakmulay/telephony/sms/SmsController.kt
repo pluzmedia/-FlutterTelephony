@@ -57,7 +57,6 @@ class SmsController(private val context: Context) {
 
     // SEND SMS
     fun sendSms(destinationAddress: String, messageBody: String, simSlot: Int, listenStatus: Boolean) {
-        val smsManager = getSmsManager()
         if (listenStatus) {
             val pendingIntents = getPendingIntents()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {

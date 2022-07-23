@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import com.shounakmulay.telephony.utils.Constants.PHONE_PERMISSIONS
 import com.shounakmulay.telephony.utils.Constants.SERVICE_STATE_PERMISSIONS
 import com.shounakmulay.telephony.utils.Constants.SMS_PERMISSIONS
